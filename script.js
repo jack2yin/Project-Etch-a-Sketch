@@ -13,10 +13,11 @@ newGrid.style.marginBottom = '2vmin';
 function createSquare(size) {
     const square = document.createElement('div');
     square.style.backgroundColor = 'white';
-    square.style.width = `calc((100vmin / ${size}) - 2px)`; //1px is the border wid
-    square.style.height = `calc((100vmin / ${size}) - 2px)`;
-    square.style.border = 'thin solid black';
-
+    square.style.width = `calc(100vmin / ${size})`;
+    square.style.height = `calc(100vmin / ${size})`;
+    square.style.border = '1px solid black';
+    square.style.boxSizing = 'border-box'; // Include border in element size
+    
     // Randomize color selection
     function getRandomRgbColor() {
         const red = Math.floor(Math.random() * 256);   // Random value between 0 and 255
@@ -68,6 +69,8 @@ newGrid.addEventListener('click', () => {
 container.style.width = '100vmin';
 container.style.height = '100vmin';
 container.style.display = 'flex';
+container.style.justifyContent = 'space-evenly';
+container.style.alignItems = 'space-evenly';
 container.style.flexWrap = 'wrap';
 // Places grid bottom
 container.style.order = '2';
