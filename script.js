@@ -12,18 +12,29 @@ newGrid.style.marginBottom = '2vmin';
 
 function createSquare(size) {
     const square = document.createElement('div');
-    square.style.backgroundColor = 'lightskyblue';
-    square.style.width = `calc((100vmin / ${size}) - 2px)`;
+    square.style.backgroundColor = 'white';
+    square.style.width = `calc((100vmin / ${size}) - 2px)`; //1px is the border wid
     square.style.height = `calc((100vmin / ${size}) - 2px)`;
     square.style.border = 'thin solid black';
 
+    // Randomize color selection
+    function getRandomRgbColor() {
+        const red = Math.floor(Math.random() * 256);   // Random value between 0 and 255
+        const green = Math.floor(Math.random() * 256);
+        const blue = Math.floor(Math.random() * 256);
+    
+        return `rgb(${red}, ${green}, ${blue})`;
+    }
+
+    const randomColor = getRandomRgbColor();
+
     // Change color on hover
     square.addEventListener('mouseenter', () => {
-        square.style.backgroundColor = 'white';
+        square.style.backgroundColor = randomColor;
     });
 
     square.addEventListener('mouseleave', () => {
-        square.style.backgroundColor = 'lightskyblue';
+        square.style.backgroundColor = randomColor;
     });
 
     return square;
