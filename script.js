@@ -23,7 +23,7 @@ function createSquare(size) {
         const red = Math.floor(Math.random() * 256);   // Random value between 0 and 255
         const green = Math.floor(Math.random() * 256);
         const blue = Math.floor(Math.random() * 256);
-    
+
         return `rgb(${red}, ${green}, ${blue})`;
     }
 
@@ -34,8 +34,16 @@ function createSquare(size) {
         square.style.backgroundColor = randomColor;
     });
 
-    square.addEventListener('mouseleave', () => {
+    square.addEventListener('touchstart', () => {
         square.style.backgroundColor = randomColor;
+    });
+
+    square.addEventListener('mouseleave', () => {
+        square.style.backgroundColor = 'black';
+    });
+
+    square.addEventListener('touchend', () => {
+        square.style.backgroundColor = 'black';
     });
 
     return square;
