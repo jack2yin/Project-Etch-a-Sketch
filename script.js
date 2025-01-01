@@ -44,6 +44,7 @@ function createSquare(size) {
 
     square.addEventListener('touchmove', () => {
         square.style.backgroundColor = randomColor;
+        preventDefault();
     })
 
     square.addEventListener('touchend', () => {
