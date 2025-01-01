@@ -47,7 +47,7 @@ function createSquare(size) {
         const touch = event.touches[0]; // Get the first touch point
         const element = document.elementFromPoint(touch.clientX, touch.clientY); // Get the element under the touch point
         if (element && element.classList.contains('grid-square')) {
-            element.style.backgroundColor = randomColor; // Apply the desired color
+            element.style.backgroundColor = black; // Apply the desired color
         }
         event.preventDefault();
     });
