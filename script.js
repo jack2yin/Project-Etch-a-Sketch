@@ -42,10 +42,14 @@ function createSquare(size) {
         square.style.backgroundColor = randomColor;
     });
 
-    square.addEventListener('touchend', () => {
-        square.style.backgroundColor = randomColor;
+    container.addEventListener('touchmove', (event) => {
+        const touch = event.touches[0]; // Get the first touch point
+        const element = document.elementFromPoint(touch.clientX, touch.clientY); // Get the element under the touch point
+        if (element && element !== container && element && element !== doc) { // Ensure it's not the container/body itself
+            element.style.backgroundColor = randomColor; // Apply the desired color
+        }
+        event.preventDefault();
     });
-
     return square;
 }
 
@@ -57,16 +61,6 @@ function createGrid(size) {
         container.appendChild(square);
     }
 }
-
-container.addEventListener('touchmove', (event) => {
-    const touch = event.touches[0]; // Get the first touch point
-    const element = document.elementFromPoint(touch.clientX, touch.clientY); // Get the element under the touch point
-    if (element && element !== container && element && element !== body) { // Ensure it's not the container/body itself
-        element.style.backgroundColor = 'black'; // Apply the desired color
-    }
-    event.preventDefault();
-});
-
 
 // Initialize default grid
 let defaultGridSize = 16; // Default grid size (16x16)
@@ -93,6 +87,7 @@ container.style.flexWrap = 'wrap';
 // Places grid bottom
 container.style.order = '2';
 
+const doc = document;
 const body = document.body;
 body.style.display = 'flex';
 body.style.flexDirection = 'column';
