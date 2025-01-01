@@ -42,9 +42,9 @@ function createSquare(size) {
         square.style.backgroundColor = randomColor;
     });
 
-    square.addEventListener('touchmove', () => {
+    square.addEventListener('touchmove', (event) => {
         square.style.backgroundColor = randomColor;
-        preventDefault();
+        event.preventDefault();
     })
 
     square.addEventListener('touchend', () => {
