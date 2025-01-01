@@ -12,6 +12,7 @@ newGrid.style.marginBottom = '2vmin';
 
 function createSquare(size) {
     const square = document.createElement('div');
+    square.classList.add('grid-square'); // Add a specific class for mobile interaction
     square.style.backgroundColor = 'white';
     square.style.width = `calc(100vmin / ${size})`;
     square.style.height = `calc(100vmin / ${size})`;
@@ -45,7 +46,7 @@ function createSquare(size) {
     container.addEventListener('touchmove', (event) => {
         const touch = event.touches[0]; // Get the first touch point
         const element = document.elementFromPoint(touch.clientX, touch.clientY); // Get the element under the touch point
-        if (element && element !== container && element && element !== doc) { // Ensure it's not the container/body itself
+        if (element && element.classList.contains('grid-square')) {
             element.style.backgroundColor = randomColor; // Apply the desired color
         }
         event.preventDefault();
