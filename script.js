@@ -43,7 +43,7 @@ function createSquare(size) {
     });
 
     square.addEventListener('touchend', () => {
-        square.style.backgroundColor = 'black';
+        square.style.backgroundColor = randomColor;
     });
 
     return square;
@@ -61,7 +61,7 @@ function createGrid(size) {
 container.addEventListener('touchmove', (event) => {
     const touch = event.touches[0]; // Get the first touch point
     const element = document.elementFromPoint(touch.clientX, touch.clientY); // Get the element under the touch point
-    if (element && element !== container) { // Ensure it's not the container itself
+    if (element && element !== container && element && element !== body) { // Ensure it's not the container/body itself
         element.style.backgroundColor = 'black'; // Apply the desired color
     }
     event.preventDefault();
