@@ -34,13 +34,17 @@ function createSquare(size) {
         square.style.backgroundColor = randomColor;
     });
 
+    square.addEventListener('mouseleave', () => {
+        square.style.backgroundColor = 'black';
+    });
+
     square.addEventListener('touchstart', () => {
         square.style.backgroundColor = randomColor;
     });
 
-    square.addEventListener('mouseleave', () => {
-        square.style.backgroundColor = 'black';
-    });
+    square.addEventListener('touchmove', () => {
+        square.style.backgroundColor = randomColor;
+    })
 
     square.addEventListener('touchend', () => {
         square.style.backgroundColor = 'black';
